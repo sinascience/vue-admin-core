@@ -14,8 +14,8 @@ import { isAxiosError } from 'axios'
 const authStore = useAuthStore()
 const router = useRouter()
 
-const email = ref('admin@fusetheme.com')
-const password = ref('admin') // Pre-filled for demo purposes
+const email = ref('sina4science@gmail.com')
+const password = ref('34170202') // Pre-filled for demo purposes
 const errorMessage = ref<string | null>(null)
 
 async function handleLogin() {
@@ -52,13 +52,7 @@ async function handleLogin() {
       <form @submit.prevent="handleLogin" class="space-y-4">
         <div class="space-y-2">
           <Label for="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="admin@fusetheme.com"
-            required
-            v-model="email"
-          />
+          <Input id="email" type="email" placeholder="your@email.com" required v-model="email" />
         </div>
 
         <div class="space-y-2">

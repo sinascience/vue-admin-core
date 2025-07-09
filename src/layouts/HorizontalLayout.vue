@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import UserMenu from '@/components/layout/UserMenu.vue'
+</script>
 
 <template>
   <div class="flex h-screen w-full flex-col bg-slate-100 dark:bg-slate-900">
@@ -14,7 +16,7 @@
         </nav>
       </div>
       <div>
-        <p>User Menu</p>
+        <UserMenu />
       </div>
     </header>
 
