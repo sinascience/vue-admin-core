@@ -1,21 +1,56 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue'
 import { menuConfig } from '@/configs/menu'
 import UserProfileCard from '@/components/layout/UserProfileCard.vue'
 import UserMenu from '@/components/layout/UserMenu.vue'
 import NotificationsMenu from '@/components/layout/NotificationsMenu.vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { useScreen } from '@/composables/useScreen'
+
+const isSidebarOpen = ref(false) // For mobile overlay
+const isSidebarCollapsed = ref(false) // For desktop collapse
+
+const { isMobile } = useScreen()
+
+const toggleSidebar = () => {
+  if (isMobile.value) {
+    isSidebarOpen.value = !isSidebarOpen.value
+  } else {
+    isSidebarCollapsed.value = !isSidebarCollapsed.value
+  }
+}
+
+// Watch for screen size changes to close mobile overlay if screen gets larger
+watch(isMobile, (newVal) => {
+  if (!newVal) {
+    isSidebarOpen.value = false
+  }
+})
 </script>
 
 <template>
-  <div class="flex h-screen w-full bg-background">
-    <aside class="flex w-72 flex-col bg-sidebar text-sidebar-foreground p-4">
-      <div class="flex h-16 shrink-0 items-center justify-between px-2">
+  <div class="relative flex h-screen w-full overflow-hidden bg-background">
+    <aside
+      :class="[
+        'z-40 flex flex-col bg-sidebar text-sidebar-foreground p-4 h-full w-72 transition-all duration-300 ease-in-out ',
+        'md:relative',
+        'max-md:absolute max-md:w-72', // Mobile-specific styles
+        isSidebarOpen ? 'max-md:translate-x-0' : 'max-md:-translate-x-full',
+        !isSidebarCollapsed ? 'md:ml-0' : 'md:-ml-72',
+      ]"
+    >
+      <div
+        :class="[
+          'flex h-16 shrink-0 items-center justify-between px-2 transition-all duration-300',
+          'justify-between px-2',
+        ]"
+      >
         <div class="flex items-center gap-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            class="size-8 text-primary"
+            class="size-8 text-primary shrink-0"
           >
             <path
               d="M12 2L1 9l11 7 9-7-5-3.17L12 2zM3.49 10.51L12 16l8.51-5.49L12 4.49 3.49 10.51z"
@@ -48,8 +83,8 @@ import { RouterLink, RouterView } from 'vue-router'
               v-slot="{ href, navigate, isActive }"
             >
               <a
-                :href="href"
                 @click="navigate"
+                :href="href"
                 :class="[
                   'flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors',
                   isActive
@@ -66,12 +101,19 @@ import { RouterLink, RouterView } from 'vue-router'
       </nav>
     </aside>
 
+    <div
+      v-if="isSidebarOpen"
+      @click="isSidebarOpen = false"
+      class="fixed inset-0 z-30 bg-black/30 md:hidden"
+      aria-hidden="true"
+    ></div>
+
     <div class="flex flex-1 flex-col">
       <header
         class="flex h-16 shrink-0 items-center justify-between border-b border-border bg-card px-6"
       >
         <div>
-          <button class="p-2">
+          <button @click="toggleSidebar" class="p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
