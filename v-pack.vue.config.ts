@@ -39,7 +39,7 @@ const config: AppConfig = {
       sans: "'Poppins', sans-serif",
     },
     colors: {
-      primary: 'oklch(0.4827 0.1909 142.94)',
+      primary: 'oklch(0.5106 0.2301 276.97)',
       background: 'oklch(0.96 0.01 260)',
       card: 'oklch(1 0 0)',
       sidebar: 'oklch(0.20 0.04 265)',
