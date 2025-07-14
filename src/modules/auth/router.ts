@@ -6,6 +6,7 @@ export default [
   {
     path: '/auth',
     component: AuthLayout,
+    meta: { nonAuth: true },
     children: [
       {
         path: 'login',

@@ -1,13 +1,5 @@
 import { type Component } from 'vue'
-import {
-  LayoutDashboard,
-  BarChart3,
-  Wallet,
-  Bitcoin,
-  School,
-  MessageSquare,
-  Contact,
-} from 'lucide-vue-next'
+import { LayoutDashboard, BarChart3, Wallet, Bitcoin, FileText } from 'lucide-vue-next'
 
 export interface MenuItem {
   title: string
@@ -54,19 +46,9 @@ export const menuConfig: MenuSection[] = [
     description: 'Custom made application designs',
     items: [
       {
-        title: 'Academy',
-        to: '/apps/academy',
-        icon: School,
-      },
-      {
-        title: 'Chat',
-        to: '/apps/chat',
-        icon: MessageSquare,
-      },
-      {
-        title: 'Contacts',
-        to: '/apps/contacts',
-        icon: Contact,
+        title: 'Posts', // Add new menu item
+        to: '/posts',
+        icon: FileText,
       },
     ],
   },
