@@ -17,7 +17,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -108,13 +113,16 @@ const formatDate = (dateString: string) => {
               <TableCell class="text-muted-foreground">{{ post.author.name }}</TableCell>
               <TableCell>
                 <div class="flex justify-center">
-                  <Check v-if="post.status === 'published'" class="size-4 text-green-500" />
+                  <Check
+                    v-if="post.status === 'published'"
+                    class="size-4 text-green-500"
+                  />
                   <X v-else class="size-4 text-red-500" />
                 </div>
               </TableCell>
               <TableCell class="text-muted-foreground">{{ formatDate(post.created_at) }}</TableCell>
               <TableCell class="text-right pr-4">
-                <TooltipProvider>
+                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger as-child>
                       <Button variant="ghost" size="icon" class="rounded-full size-8">
@@ -151,18 +159,10 @@ const formatDate = (dateString: string) => {
       <div class="flex items-center gap-6">
         <span>1–10 of {{ totalRecords }}</span>
         <div class="flex items-center gap-2">
-          <Button variant="outline" size="icon" class="size-8"
-            ><ChevronsLeft class="size-4"
-          /></Button>
-          <Button variant="outline" size="icon" class="size-8"
-            ><ChevronLeft class="size-4"
-          /></Button>
-          <Button variant="outline" size="icon" class="size-8"
-            ><ChevronRight class="size-4"
-          /></Button>
-          <Button variant="outline" size="icon" class="size-8"
-            ><ChevronsRight class="size-4"
-          /></Button>
+          <Button variant="outline" size="icon" class="size-8"><ChevronsLeft class="size-4" /></Button>
+          <Button variant="outline" size="icon" class="size-8"><ChevronLeft class="size-4" /></Button>
+          <Button variant="outline" size="icon" class="size-8"><ChevronRight class="size-4" /></Button>
+          <Button variant="outline" size="icon" class="size-8"><ChevronsRight class="size-4" /></Button>
         </div>
       </div>
     </div>
