@@ -16,3 +16,6 @@ export interface Post {
   author: User
   status: 'published' | 'draft'
 }
+
+// Re-export navigation types for convenience
+export * from './navigation'

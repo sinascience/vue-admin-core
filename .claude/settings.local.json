@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(bun run:*)",
+      "Bash(bun lint:*)",
+      "Bash(bun:*)",
+      "WebFetch(domain:www.shadcn-vue.com)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": []
+  }
+}

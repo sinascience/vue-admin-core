@@ -1,6 +1,18 @@
 interface AppConfig {
-  layout: {
-    style: 'vertical' | 'horizontal'
+  layout:
+    | {
+        style: 'vertical'
+        variant: 'classic' | 'classy' | 'compact' | 'dense' | 'futuristic' | 'thin' // for vertical
+      }
+    | {
+        style: 'horizontal'
+        variant: 'centered' | 'enterprise' | 'material' | 'modern' // for horizontal
+      }
+  navigation: {
+    appearance: 'default' | 'compact' | 'dense' | 'thin'
+    mode: 'side' | 'over'
+    collapsed: boolean
+    autoCollapse: boolean
   }
   theme: {
     radius: {
@@ -27,7 +39,14 @@ interface AppConfig {
 
 const config: AppConfig = {
   layout: {
-    style: 'vertical',
+    style: 'horizontal',
+    variant: 'modern',
+  },
+  navigation: {
+    appearance: 'default',
+    mode: 'side',
+    collapsed: false,
+    autoCollapse: true,
   },
   theme: {
     radius: {
