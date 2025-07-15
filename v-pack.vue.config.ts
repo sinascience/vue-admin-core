@@ -39,9 +39,13 @@ interface AppConfig {
 
 const config: AppConfig = {
   layout: {
-    style: 'horizontal',
-    variant: 'modern',
+    style: 'vertical',
+    variant: 'classy',
   },
+  // layout: {
+  //   style: 'horizontal',
+  //   variant: 'modern',
+  // },
   navigation: {
     appearance: 'default',
     mode: 'side',
